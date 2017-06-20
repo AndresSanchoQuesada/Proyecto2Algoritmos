@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -22,6 +23,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 /**
  *
@@ -36,10 +40,11 @@ import javax.swing.JOptionPane;
     private JMenuItem  jMenuItemChargeFile;
     private JMenuItem  jMenuItem2;
     private JMenuItem  jMenuItem3;
-    
+    private JTextArea jta;
+    JScrollPane scrollPane;
     
     public PrincipalWindow(){
-        super();
+        super("Proyect 2");
         this.setSize(800, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
@@ -70,13 +75,28 @@ import javax.swing.JOptionPane;
         this.jMenuItem3.addActionListener(this);
         this.jmOpciones.add(this.jMenuItem3);
         
+        
+        
+        this.jta = new JTextArea();
+        //this.jta.setBounds(100, 100, 500, 400);
+        this.jta.setBackground(Color.CYAN);
+        this.jta.setEditable(false);
+        this.jta.setVisible(false);
+        this.add(jta);
+        
+        scrollPane = new JScrollPane(jta);
+        scrollPane.setBounds(10,20,500,400);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.setVisible(false);
+        this.add(scrollPane);
     }//init()
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==this.jMenuItemChargeFile){
             
-             String aux = "";
+             String aux;
         String text = "";
         
             JFileChooser file = new JFileChooser();
@@ -87,15 +107,19 @@ import javax.swing.JOptionPane;
                  try {
                      files = new FileReader(open);
                      BufferedReader read = new BufferedReader(files);
-                     aux = read.readLine();
-                     while (aux != null) {
-                         text += aux;
-                         aux = read.readLine();
-                         if (aux != null) {
-                             text += " ";
-                         }//if
-                     }//while
+
+                        while((aux = read.readLine()) != null){
+                            text += aux+"\n";
+                        }
+
                      read.close();
+                    
+                     if(!text.equals("")){
+                         this.jta.setText(text);
+                         this.jta.setVisible(true);
+                         scrollPane.setVisible(true);
+                     }//if
+                     
                  } //if
                  catch (FileNotFoundException ex) {
                      Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
