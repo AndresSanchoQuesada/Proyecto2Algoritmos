@@ -7,7 +7,15 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JMenu;
@@ -67,6 +75,42 @@ import javax.swing.JOptionPane;
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==this.jMenuItemChargeFile){
+            
+             String aux = "";
+        String text = "";
+        
+            JFileChooser file = new JFileChooser();
+            file.showOpenDialog(file);
+            File open = file.getSelectedFile();
+            if (open != null) {
+                FileReader files = null;
+                 try {
+                     files = new FileReader(open);
+                     BufferedReader read = new BufferedReader(files);
+                     aux = read.readLine();
+                     while (aux != null) {
+                         text += aux;
+                         aux = read.readLine();
+                         if (aux != null) {
+                             text += " ";
+                         }//if
+                     }//while
+                     read.close();
+                 } //if
+                 catch (FileNotFoundException ex) {
+                     Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
+                 } catch (IOException ex) {
+                     Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
+                 } finally {
+                     try {
+                         files.close();
+                     } catch (IOException ex) {
+                         Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                 }
+            }
+        
+    
 
             
         }else if(e.getSource()==this.jMenuItem2){
