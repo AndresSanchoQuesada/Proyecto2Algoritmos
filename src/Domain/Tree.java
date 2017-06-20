@@ -255,16 +255,16 @@ public class Tree {
         return newParent;
     }// insert AVL
 
-//    public void insert(String nod) {
-//        String[] wordTemp = nod.split("/");
-//        int num = Integer.parseInt(wordTemp[1]);
-//        int ini = wordTemp[0].codePointAt(0);
-//        Node newNode = new Node(num, ini, wordTemp[0], wordTemp[2]);
-//        if (root == null) {
-//            root = newNode;
-//        } else {
-//            root = insertAVL(newNode, root);
-//        }//else
-//    }// insert
+    public void insert(String nod) {
+        String[] wordTemp = nod.split("/");
+        int num = Integer.parseInt(wordTemp[1]);
+        int ini = wordTemp[0].codePointAt(0);
+        Node newNode = new Node(num, ini, wordTemp[0], wordTemp[2]);
+        if (root == null) {
+            root = newNode;
+        } else {
+            root = insertAVL(newNode, root);
+        }//else
+    }// insert
 
 }//tree
