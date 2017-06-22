@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Domain.TextsMethods;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,6 +43,10 @@ import javax.swing.ScrollPaneConstants;
     private JMenuItem  jMenuItem3;
     private JTextArea jta;
     JScrollPane scrollPane;
+        TextsMethods textsMethods;
+        
+        String text;
+        String text2;
     
     public PrincipalWindow(){
         super("Proyect 2");
@@ -57,6 +62,8 @@ import javax.swing.ScrollPaneConstants;
     }// VentanaPrincipal() constructor
     
     private void init(){
+        
+        this.textsMethods = new TextsMethods();
         
         this.mn=new JMenuBar();
         setJMenuBar(this.mn);
@@ -97,7 +104,8 @@ import javax.swing.ScrollPaneConstants;
         if(e.getSource()==this.jMenuItemChargeFile){
             
              String aux;
-        String text = "";
+         text = "";
+         text2 = "";
         
             JFileChooser file = new JFileChooser();
             file.showOpenDialog(file);
@@ -110,6 +118,7 @@ import javax.swing.ScrollPaneConstants;
 
                         while((aux = read.readLine()) != null){
                             text += aux+"\n";
+                            text2 += aux+" ";
                         }
 
                      read.close();
@@ -139,8 +148,10 @@ import javax.swing.ScrollPaneConstants;
             
         }else if(e.getSource()==this.jMenuItem2){
         //Llamar internalActualizar
-
-            
+        
+        if(!jta.getText().equals(""))
+            textsMethods.reparatedWords(text2);
+                
             
             }else if(e.getSource()==this.jMenuItem3){
         
