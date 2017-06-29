@@ -19,7 +19,7 @@ public class Proyect2TreeBinary {
     public static void main(String[] args) {
         PrincipalWindow pw= new PrincipalWindow();
         pw.setVisible(true);
-        
+        //principal
         
         
     }
