@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 public class Panel extends JPanel{
     
     private final SelfBalancingBinarySerchTree tree;
-    int tamanioNodo = 80;
+    int tamanioNodo = 20;
     private final int HEIGHT;
     private final int WIDTH;
     

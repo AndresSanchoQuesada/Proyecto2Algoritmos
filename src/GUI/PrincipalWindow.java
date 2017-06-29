@@ -221,10 +221,12 @@ public class PrincipalWindow extends JFrame implements ActionListener {
         } else if(e.getSource()==jMenuItem6){
             Panel displayTree = new Panel(balancingBinarySearchTree);
             JFrame frame = new JFrame();
-            JScrollPane scrollpane = new JScrollPane(displayTree);
-            scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            scrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-            frame.add(scrollpane);
+            JScrollPane scrollpaneV = new JScrollPane(displayTree);
+            JScrollPane scrollpaneH = new JScrollPane(displayTree);
+            scrollpaneV.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollpaneH.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+            frame.add(scrollpaneV);
+            frame.add(scrollpaneH);
             frame.pack();
             frame.setVisible(true);
             
