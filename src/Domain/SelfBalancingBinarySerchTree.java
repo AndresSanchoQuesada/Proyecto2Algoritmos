@@ -27,7 +27,7 @@ import javax.swing.JFileChooser;
  */
 public class SelfBalancingBinarySerchTree {
     
-         private SBBSTNode root;     
+         public SBBSTNode root;     
          private   TextsMethods TEXTSMETHODS = new TextsMethods();
          String packer = "";
 

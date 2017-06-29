@@ -11,10 +11,10 @@ package Domain;
  */
 public class SBBSTNode {
     
-     SBBSTNode left, right;
-     String word;
+     public SBBSTNode left, right;
+     public String word;
      String [] array;
-     int height;
+     public int height;
 
      /* Constructor */
 
