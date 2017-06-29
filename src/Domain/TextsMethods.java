@@ -6,21 +6,26 @@
 package Domain;
 
 
-import java.lang.reflect.Array;
-
 /**
  *
  * @author emilio
  */
+
 public class TextsMethods {
+    
+     SelfBalancingBinarySerchTree SELFBALANCINGBINARYSEARCHTHREE;
+     
+     public TextsMethods(){
+         //SELFBALANCINGBINARYSEARCHTHREE = new SelfBalancingBinarySearchTree();
+     }
 
     public void reparatedWords(String text) {
         String textArray[] = text.split(" ");
-        for(int q = 0; q < textArray.length; q++)
-            System.out.println(textArray[q]+": pocision: "+q);
+//        for(int q = 0; q < textArray.length; q++)
+//            System.out.println(textArray[q]+": pocision: "+q);
         String wordArray[];
-        String word = "";
-        String wordIndex = "";
+        String word;
+        String wordIndex;
         int cont = 0;
 
         for (String textArray1 : textArray) {
@@ -40,15 +45,43 @@ public class TextsMethods {
                     } //if
                 } //for
                 wordArray = wordIndex.split(" ");
-                System.out.println("Palabra: "+word+" en posiciones: "+wordIndex);
                 
-                //wordArray = wordIndex.split(" ");
+               
+                System.out.println("Palabra: "+word+" .En posiciones: "+wordIndex);
                 
-                //cont = 0;
+                 //SELFBALANCINGBINARYSEARCHTHREE.insert(word, wordArray);
+     
             } //if
         } //for
-//        System.err.println(textArray[0]+" "+textArray[1]+" "+textArray[2]);
-
     }//reparatedWords
+    
+    public  boolean compareWords(String word, SBBSTNode t){
+        
+        int charsNumbers;
+         
+         if(word.length() > t.word.length()){
+            charsNumbers  = t.word.length();
+         }else{
+             charsNumbers = word.length();
+         }
+         
+         int charW;
+         int charT;
+         boolean flag = false;
+         
+         for(int i = 0 ; i < charsNumbers ; i++){
+             charW = (int) word.charAt(i);
+             charT = (int) word.charAt(i);
+             
+             if(charW != charT){
+                 if(charW > charT){
+                     flag = true;
+                     return flag;
+                     
+                 }//if
+             }//if
+         }//for
+         return flag;
+    }
 
 }//

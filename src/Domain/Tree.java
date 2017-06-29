@@ -118,6 +118,7 @@ public class Tree {
         c.left = leftRotation(c.left);
         temp = rightRotation(c);
 
+        
         return temp;
 
     }//left_right_rotation

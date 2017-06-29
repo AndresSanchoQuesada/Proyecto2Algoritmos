@@ -5,14 +5,18 @@
  */
 package GUI;
 
+import Data.FileData;
+import Domain.SelfBalancingBinarySerchTree;
 import Domain.TextsMethods;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,135 +36,185 @@ import javax.swing.ScrollPaneConstants;
  *
  * @author andres
  */
-    public class PrincipalWindow extends JFrame implements ActionListener {
-    
+public class PrincipalWindow extends JFrame implements ActionListener {
+
     JDesktopPane desktopPane;// cuando no se pone la visibilidad por defecto es privated
     // private InternalRegistrarGenero primerInternalFrame;
     private JMenuBar mn;
     private JMenu jmOpciones;
-    private JMenuItem  jMenuItemChargeFile;
-    private JMenuItem  jMenuItem2;
-    private JMenuItem  jMenuItem3;
+    private JMenuItem jMenuItemChargeFile;
+    private JMenuItem jMenuItem2;
+    private JMenuItem jMenuItem3;
+    private JMenuItem jMenuItem4;
+    private JMenuItem jMenuItem5;
+    
     private JTextArea jta;
     JScrollPane scrollPane;
-        TextsMethods textsMethods;
-        
-        String text;
-        String text2;
-    
-    public PrincipalWindow(){
+    TextsMethods textsMethods;
+    FileData data;
+
+    String text;
+    String text2;
+    SelfBalancingBinarySerchTree balancingBinarySearchTree;
+
+    public static String finalArray[];
+    public static int finalSize;
+
+    public PrincipalWindow() {
         super("Proyect 2");
         this.setSize(800, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-        this.desktopPane= new JDesktopPane();
+
+        this.desktopPane = new JDesktopPane();
         this.desktopPane.setLayout(null);
-   
-         init();
+
+        init();
         this.add(this.desktopPane);
-        
+
     }// VentanaPrincipal() constructor
-    
-    private void init(){
-        
+
+    private void init() {
+        //this.balancingBinarySearchTree = new SelfBalancingBinarySearchTree();
         this.textsMethods = new TextsMethods();
-        
-        this.mn=new JMenuBar();
+        //this.data = new FileData();
+
+        this.mn = new JMenuBar();
         setJMenuBar(this.mn);
-        this.jmOpciones=new JMenu("Opciones");
+        this.jmOpciones = new JMenu("Opciones");
         this.mn.add(jmOpciones);
-        
-        this.jMenuItemChargeFile=new JMenuItem("Cargar Archivo");
+
+        this.jMenuItemChargeFile = new JMenuItem("Cargar Archivo");
         this.jMenuItemChargeFile.addActionListener(this);
         this.jmOpciones.add(this.jMenuItemChargeFile);
-        
-        this.jMenuItem2=new JMenuItem("item1");
+
+        this.jMenuItem2 = new JMenuItem("Inserto");
         this.jMenuItem2.addActionListener(this);
         this.jmOpciones.add(this.jMenuItem2);
 
-        this.jMenuItem3=new JMenuItem("item2");
+        this.jMenuItem3 = new JMenuItem("Comprimir archivo");
         this.jMenuItem3.addActionListener(this);
         this.jmOpciones.add(this.jMenuItem3);
+
+        this.jMenuItem4 = new JMenuItem("Safe File Compress");
+        this.jMenuItem4.addActionListener(this);
+        this.jMenuItem4.setEnabled(false);
+        this.jmOpciones.add(this.jMenuItem4);
         
-        
-        
+        this.jMenuItem5 = new JMenuItem("Descompress file");
+        this.jMenuItem5.addActionListener(this);
+        this.jMenuItem5.setEnabled(false);
+        this.jmOpciones.add(this.jMenuItem5);
+
         this.jta = new JTextArea();
         //this.jta.setBounds(100, 100, 500, 400);
         this.jta.setBackground(Color.CYAN);
         this.jta.setEditable(false);
         this.jta.setVisible(false);
         this.add(jta);
-        
+
         scrollPane = new JScrollPane(jta);
-        scrollPane.setBounds(10,20,500,400);
+        scrollPane.setBounds(10, 20, 500, 400);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane.setVisible(false);
         this.add(scrollPane);
+
+        this.balancingBinarySearchTree = new SelfBalancingBinarySerchTree();
+
     }//init()
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==this.jMenuItemChargeFile){
-            
-             String aux;
-         text = "";
-         text2 = "";
-        
+        if (e.getSource() == this.jMenuItemChargeFile) {
+
+            String aux;
+            text = "";
+            text2 = "";
+
             JFileChooser file = new JFileChooser();
             file.showOpenDialog(file);
             File open = file.getSelectedFile();
             if (open != null) {
                 FileReader files = null;
-                 try {
-                     files = new FileReader(open);
-                     BufferedReader read = new BufferedReader(files);
+                try {
+                    files = new FileReader(open);
+                    BufferedReader read = new BufferedReader(files);
 
-                        while((aux = read.readLine()) != null){
-                            text += aux+"\n";
-                            text2 += aux+" ";
-                        }
+                    while ((aux = read.readLine()) != null) {
+                        text += aux + "\n";
+                        text2 += aux + " ";
 
-                     read.close();
-                    
-                     if(!text.equals("")){
-                         this.jta.setText(text);
-                         this.jta.setVisible(true);
-                         scrollPane.setVisible(true);
-                     }//if
-                     
-                 } //if
-                 catch (FileNotFoundException ex) {
-                     Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
-                 } catch (IOException ex) {
-                     Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
-                 } finally {
-                     try {
-                         files.close();
-                     } catch (IOException ex) {
-                         Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                 }
+                    }
+
+                    read.close();
+
+                    finalArray = text2.split(" ");
+                    finalSize = finalArray.length;
+
+                    if (!text.equals("")) {
+                        this.jta.setText(text);
+                        this.jta.setVisible(true);
+                        scrollPane.setVisible(true);
+                    }//if
+
+                } //if
+                catch (FileNotFoundException ex) {
+                    Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    try {
+                        files.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(PrincipalWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
-        
-    
 
+        } else if (e.getSource() == this.jMenuItem2) {
+            //Llamar internalActualizar
+
+            if (!jta.getText().equals("")) {
+                balancingBinarySearchTree.reparatedWords(text2);
+            }
+
+        } else if (e.getSource() == this.jMenuItem3) {
+            //System.out.println(balancingBinarySearchTree.countNodes());
+            //llamar internalBuscar
+            balancingBinarySearchTree.inorder();
+            this.jMenuItem4.setEnabled(true);
+            this.jMenuItem5.setEnabled(true);
+
+        } else if (e.getSource() == jMenuItem4) {
+            System.out.println(balancingBinarySearchTree.stack.size());
+
+            JFileChooser jF1 = new JFileChooser();
+            jF1.setApproveButtonText("Guardar");
+            jF1.showSaveDialog(null);
+            File file = new File(jF1.getSelectedFile() + "Arbol.txt");
             
-        }else if(e.getSource()==this.jMenuItem2){
-        //Llamar internalActualizar
-        
-        if(!jta.getText().equals(""))
-            textsMethods.reparatedWords(text2);
+            try{
+                BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
                 
+                while (balancingBinarySearchTree.stack.size() > 0) {
+
+                    bw.write(balancingBinarySearchTree.stack.pop() + "\n");
+
+                }
+
+                bw.close();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }else if(e.getSource()==jMenuItem5){
             
-            }else if(e.getSource()==this.jMenuItem3){
+            
         
-                //llamar internalBuscar
-                
-            }else{
-                JOptionPane.showMessageDialog(null,"Error");
+            balancingBinarySearchTree.descompressFile();
+            
     }
-        
+
     }// metodo actionPerformed
-    
+
 }
