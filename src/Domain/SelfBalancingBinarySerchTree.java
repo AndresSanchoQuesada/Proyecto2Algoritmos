@@ -32,6 +32,7 @@ public class SelfBalancingBinarySerchTree {
          String packer = "";
 
          public Stack <String> stack = new Stack();
+         String [] descompressArray;
          
      /* Constructor */
 
@@ -386,8 +387,44 @@ public class SelfBalancingBinarySerchTree {
                         text2 += aux + " ";
 
                     }
-
+ 
                     read.close();
+                    
+                    System.out.print("ESTO ES EL RESULTADO FINAL \n"+ text);
+                    
+                    descompressArray = text.split("\n");
+                    
+                    String index = "";
+                    String word = "";
+                    boolean flag= false;
+                    char charNumber;
+                    
+                    int cont = 0;
+                    
+                    for(int i = 1; i < descompressArray.length; i++){
+                        while(flag == false){
+                            charNumber =  descompressArray[i].charAt(cont);
+                            
+                            if((int)charNumber == 93){
+                                flag = true;
+                            }else{
+                                index += charNumber;
+                            }//else
+                            
+                            cont++;
+                            
+                            if(flag == true){
+                                for(int j = cont+1 ; j < descompressArray[i].length() ; j++){
+                                    word += descompressArray[i].charAt(j);
+                                }//for
+                            }
+                            cont = 0;
+                        }//while
+                            
+                        System.out.println("Esto es lo que va en el Vector final \n"+word+" "+index);
+                        
+                    }//for
+                    
 
                     finalArray = text2.split(" ");
                     finalSize = finalArray.length;
