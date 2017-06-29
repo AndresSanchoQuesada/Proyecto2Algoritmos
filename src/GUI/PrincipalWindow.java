@@ -24,6 +24,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -47,6 +48,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     private JMenuItem jMenuItem3;
     private JMenuItem jMenuItem4;
     private JMenuItem jMenuItem5;
+    private JMenuItem jMenuItem6;
     
     private JTextArea jta;
     JScrollPane scrollPane;
@@ -104,6 +106,11 @@ public class PrincipalWindow extends JFrame implements ActionListener {
         this.jMenuItem5.addActionListener(this);
         this.jMenuItem5.setEnabled(false);
         this.jmOpciones.add(this.jMenuItem5);
+        
+        this.jMenuItem6 = new JMenuItem("Show Tree");
+        this.jMenuItem6.addActionListener(this);
+        this.jMenuItem6.setEnabled(false);
+        this.jmOpciones.add(this.jMenuItem6);
 
         this.jta = new JTextArea();
         //this.jta.setBounds(100, 100, 500, 400);
@@ -184,6 +191,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
             balancingBinarySearchTree.inorder();
             this.jMenuItem4.setEnabled(true);
             this.jMenuItem5.setEnabled(true);
+            this.jMenuItem6.setEnabled(true);
 
         } else if (e.getSource() == jMenuItem4) {
             System.out.println(balancingBinarySearchTree.stack.size());
@@ -207,13 +215,20 @@ public class PrincipalWindow extends JFrame implements ActionListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        }else if(e.getSource()==jMenuItem5){
-            
-            
-        
+        }else if(e.getSource()==jMenuItem5){     
             balancingBinarySearchTree.descompressFile();
             
-    }
+        } else if(e.getSource()==jMenuItem6){
+            Panel displayTree = new Panel(balancingBinarySearchTree);
+            JFrame frame = new JFrame();
+            JScrollPane scrollpane = new JScrollPane(displayTree);
+            scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+            frame.add(scrollpane);
+            frame.pack();
+            frame.setVisible(true);
+            
+        }
 
     }// metodo actionPerformed
 

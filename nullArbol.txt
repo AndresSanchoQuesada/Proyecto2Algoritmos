@@ -1,0 +1,138 @@
+[0]Poema
+[1]15
+[2, 167, 168, 173, 180, 196, 211, 224, 238]
+[3, 71, 137]Me
+[4, 72, 138]gustas
+[5, 73, 139]cuando
+[6, 74, 140]callas
+[7, 141]porque
+[8, 76, 80, 142]estás
+[9, 77, 81, 114, 118, 122, 143, 148]como
+[10]ausente
+[11, 16, 30, 64, 75, 91, 126, 135, 146]y
+[12, 87, 99]me
+[13, 88]oyes
+[14, 89]desde
+[15]lejos
+[17, 46, 62, 92]mi
+[18, 93]voz
+[19, 94, 164]no
+[20, 27, 35, 59, 65, 95, 107]te
+[21]toca.
+[22]Parece
+[23, 32, 98, 106, 163, 189, 198, 204, 217, 231]que
+[24]los
+[25]ojos
+[26, 240]se
+[28]hubieran
+[29]volado
+[31]parece
+[33, 119]un
+[34]beso
+[36]cerrara
+[37, 68, 123, 171, 176, 205, 207, 218, 220, 243, 247]la
+[38]boca.
+[39]Como
+[40]todas
+[41, 50, 213]las
+[42]cosas
+[43]están
+[44]llenas
+[45, 49, 57, 131, 162, 249]de
+[47, 54, 63]alma
+[48]emerges
+[51]cosas,
+[52]llena
+[53]del
+[55]mía.
+[56]Mariposa
+[58]sueño,
+[60, 66]pareces
+[61, 67]a
+[69, 153]palabra
+[70]melancolía;
+[78]distante.
+[79, 86, 158]Y
+[82]quejándote,
+[83]mariposa
+[84, 242, 246]en
+[85]arrullo.
+[90]lejos,
+[96]alcanza:
+[97]déjame
+[100]calle
+[101, 110]con
+[102, 190, 199, 202]el
+[103, 129]silencio
+[104]tuyo.
+[105]Déjame
+[108]hable
+[109]también
+[111, 226, 229, 232]tu
+[112]silencio,
+[113]claro
+[115, 155, 250]una
+[116]lámpara,
+[117]simple
+[120]anillo.
+[121]Eres
+[124]noche,
+[125]callada
+[127]constelada.
+[128]Tu
+[130]es
+[132]estrella,
+[133]tan
+[134]lejano
+[136]sencillo.
+[144]ausente.
+[145]Distante
+[147]dolorosa
+[149]si
+[150]hubieras
+[151]muerto.
+[152]Una
+[154]entonces,
+[156]sonrisa
+[157]basta.
+[159]estoy
+[160]alegre,
+[161]alegre
+[165]sea
+[166]cierto.
+[169, 174, 178, 194, 209, 222, 236]Se
+[170, 175]equivocó
+[172]paloma
+[177]paloma.
+[179, 195, 210, 223, 237]equivocaba.
+[181]Por
+[182]ir
+[183, 186]al
+[184]Norte,
+[185]fue
+[187]Sur.
+[188, 197]Creyó
+[191]trigo
+[192, 201, 228]era
+[193]agua.
+[200]mar
+[203]cielo;
+[206]noche
+[208]mañana.
+[212, 225]Que
+[214]estrellas
+[215]eran
+[216]rocío;
+[219]calor,
+[221]nevada.
+[227]falda
+[230]blusa;
+[233]corazón
+[234]su
+[235]casa.
+[239](Ella
+[241]durmió
+[244]orilla.
+[245]Tú,
+[248]cumbre
+[251]rama.)
