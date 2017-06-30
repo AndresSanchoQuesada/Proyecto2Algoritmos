@@ -7,6 +7,7 @@ package GUI;
 
 import Data.FileData;
 import Domain.SelfBalancingBinarySerchTree;
+import static Domain.SelfBalancingBinarySerchTree.finalText;
 import Domain.TextsMethods;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -50,7 +51,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     private JMenuItem jMenuItem5;
     private JMenuItem jMenuItem6;
     
-    private JTextArea jta;
+    public JTextArea jta;
     JScrollPane scrollPane;
     TextsMethods textsMethods;
     FileData data;
@@ -217,6 +218,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
             }
         }else if(e.getSource()==jMenuItem5){     
             balancingBinarySearchTree.descompressFile();
+            jta.setText(finalText);
             
         } else if(e.getSource()==jMenuItem6){
             Panel displayTree = new Panel(balancingBinarySearchTree);
