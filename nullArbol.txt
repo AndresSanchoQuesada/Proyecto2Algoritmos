@@ -136,3 +136,49 @@
 [245]Tú,
 [248]cumbre
 [251]rama.)
+[0, 5, 9, 25, 40, 53, 67]Se
+[1, 6]equivocó
+[2, 7, 36, 38, 49, 51, 74, 78]la
+[3]paloma
+[4, 11, 27, 42, 55, 69]
+[8]paloma.
+[10, 26, 41, 54, 68]equivocaba.
+[12]Por
+[13]ir
+[14, 17]al
+[15]Norte,
+[16]fue
+[18]Sur.
+[19, 28]Creyó
+[20, 29, 35, 48, 62]que
+[21, 30, 33]el
+[22]trigo
+[23, 32, 59]era
+[24]agua.
+[31]mar
+[34]cielo;
+[37]noche
+[39]mañana.
+[43, 56]Que
+[44]las
+[45]estrellas
+[46]eran
+[47]rocío;
+[50]calor,
+[52]nevada.
+[57, 60, 63]tu
+[58]falda
+[61]blusa;
+[64]corazón
+[65]su
+[66]casa.
+[70](Ella
+[71]se
+[72]durmió
+[73, 77]en
+[75]orilla.
+[76]Tú,
+[79]cumbre
+[80]de
+[81]una
+[82]rama.)

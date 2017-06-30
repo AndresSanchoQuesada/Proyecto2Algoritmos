@@ -5,10 +5,8 @@
  */
 package GUI;
 
-import Data.FileData;
 import Domain.SelfBalancingBinarySerchTree;
 import static Domain.SelfBalancingBinarySerchTree.finalText;
-import Domain.TextsMethods;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,9 +51,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     
     public JTextArea jta;
     JScrollPane scrollPane;
-    TextsMethods textsMethods;
-    FileData data;
-
+    
     String text;
     String text2;
     SelfBalancingBinarySerchTree balancingBinarySearchTree;
@@ -64,7 +60,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     public static int finalSize;
 
     public PrincipalWindow() {
-        super("Proyect 2");
+        super("File compressor");
         this.setSize(800, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -77,24 +73,22 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     }// VentanaPrincipal() constructor
 
     private void init() {
-        //this.balancingBinarySearchTree = new SelfBalancingBinarySearchTree();
-        this.textsMethods = new TextsMethods();
-        //this.data = new FileData();
+
 
         this.mn = new JMenuBar();
         setJMenuBar(this.mn);
-        this.jmOpciones = new JMenu("Opciones");
+        this.jmOpciones = new JMenu("Options");
         this.mn.add(jmOpciones);
 
-        this.jMenuItemChargeFile = new JMenuItem("Cargar Archivo");
+        this.jMenuItemChargeFile = new JMenuItem("file upload");
         this.jMenuItemChargeFile.addActionListener(this);
         this.jmOpciones.add(this.jMenuItemChargeFile);
 
-        this.jMenuItem2 = new JMenuItem("Inserto");
+        this.jMenuItem2 = new JMenuItem("File Insert");
         this.jMenuItem2.addActionListener(this);
         this.jmOpciones.add(this.jMenuItem2);
 
-        this.jMenuItem3 = new JMenuItem("Comprimir archivo");
+        this.jMenuItem3 = new JMenuItem("File Compress");
         this.jMenuItem3.addActionListener(this);
         this.jmOpciones.add(this.jMenuItem3);
 
@@ -105,7 +99,6 @@ public class PrincipalWindow extends JFrame implements ActionListener {
         
         this.jMenuItem5 = new JMenuItem("Descompress file");
         this.jMenuItem5.addActionListener(this);
-        this.jMenuItem5.setEnabled(false);
         this.jmOpciones.add(this.jMenuItem5);
         
         this.jMenuItem6 = new JMenuItem("Show Tree");
@@ -191,16 +184,15 @@ public class PrincipalWindow extends JFrame implements ActionListener {
             //llamar internalBuscar
             balancingBinarySearchTree.inorder();
             this.jMenuItem4.setEnabled(true);
-            this.jMenuItem5.setEnabled(true);
             this.jMenuItem6.setEnabled(true);
 
         } else if (e.getSource() == jMenuItem4) {
             System.out.println(balancingBinarySearchTree.stack.size());
 
             JFileChooser jF1 = new JFileChooser();
-            jF1.setApproveButtonText("Guardar");
+            jF1.setApproveButtonText("Safe File");
             jF1.showSaveDialog(null);
-            File file = new File(jF1.getSelectedFile() + "Arbol.txt");
+            File file = new File(jF1.getSelectedFile() + "Tree.txt");
             
             try{
                 BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
