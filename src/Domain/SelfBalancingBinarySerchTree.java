@@ -1,4 +1,5 @@
 /*
+*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -332,12 +333,12 @@ public class SelfBalancingBinarySerchTree {
                 read.close();
 
                 finalArray = text2.split(" ");
-                finalSize = finalArray.length-1;
+                finalSize = finalArray.length - 1;
 
                 System.out.print("ESTO ES EL RESULTADO FINAL \n" + text);
 
                 descompressArray = text.split("\n");
-                System.out.println("Contenido des desco array: "+Arrays.toString(descompressArray));
+                System.out.println("Contenido des desco array: " + Arrays.toString(descompressArray));
                 String index = "";
                 String indexArray[];
                 String word = "";
@@ -347,15 +348,18 @@ public class SelfBalancingBinarySerchTree {
                 int cont = 1;
                 int cont2 = 1;
                 int cont3 = 0;
-                System.out.println("tamano de dessco array "+ descompressArray.length);
-                
+                int parch = 0;
+                System.out.println("tamano de dessco array " + descompressArray.length);
+
                 for (int i = 0; i < descompressArray.length; i++) {
                     cont3++;
                     flag = false;
                     index = "";
                     word = "";
+                    parch = descompressArray.length - 1;
+
                     while (flag == false) {
-                        System.out.println("vuelta numero: "+cont3);
+                        System.out.println("vuelta numero: " + cont3);
                         charNumber = descompressArray[i].charAt(cont);
 
                         if ((int) charNumber == 93) {
@@ -366,10 +370,13 @@ public class SelfBalancingBinarySerchTree {
                         } else if (charNumber != 93 && charNumber != ' ') {
 
                             index += charNumber;
-                        }//else
 
+                        }
+
+//                        }else if(i == parch){
+//                            
+//                        }
                         cont++;
-                        
 
 //                            if(flag == true){
 //                                for(int j = cont+1 ; j < descompressArray[i].length() ; j++){
@@ -382,15 +389,39 @@ public class SelfBalancingBinarySerchTree {
                         word += descompressArray[i].charAt(j);
                     }
 
-                    
-
                     indexArray = index.split(",");
 
-                    loadText(indexArray, word, descompressArray.length-1, cont2);
+                    loadText(indexArray, word, descompressArray.length - 1, cont2);
 
                     cont2++;
 
                 }//for
+                
+                char charLastNumber;
+        String lastWord = "";
+        String lastIndex = "";
+        for (int q = 1; q < descompressArray[descompressArray.length - 1].length(); q++) {
+            charLastNumber = descompressArray[descompressArray.length - 1].charAt(q);
+
+            if ((int) charLastNumber == 93) {
+
+                for (int p = q + 1; p < descompressArray[descompressArray.length - 1].length(); p++) {
+                    charNumber = descompressArray[descompressArray.length - 1].charAt(p);
+                    lastWord += charLastNumber;
+                }
+
+                break;
+            } else if (charLastNumber != 93 && charLastNumber != ' ') {
+
+                lastIndex += charLastNumber;
+
+            }
+
+        }
+        
+        String LastIndexArray [] = lastIndex.split(",");
+        
+                loadText(LastIndexArray, lastWord, descompressArray.length - 1, cont2);
 
             } //if
             catch (FileNotFoundException ex) {
@@ -412,24 +443,44 @@ public class SelfBalancingBinarySerchTree {
 //        System.out.println("Esto es lo que va en el Vector final \n Posiciones:" + Arrays.toString(indexArray) + " Palabra: " + word);
 //        System.out.println("Tamano del vector final "+finalArray.length);
 
-        
+//        char charNumber;
+//        String lastWord = "";
+//        String lastIndex = "";
+//        for (int q = 1; q < descompressArray[descompressArray.length - 1].length(); q++) {
+//            charNumber = descompressArray[descompressArray.length - 1].charAt(q);
+//
+//            if ((int) charNumber == 93) {
+//
+//                for (int p = q + 1; p < descompressArray[descompressArray.length - 1].length(); p++) {
+//                    charNumber = descompressArray[descompressArray.length - 1].charAt(p);
+//                    lastWord += charNumber;
+//                }
+//
+//                break;
+//            } else if (charNumber != 93 && charNumber != ' ') {
+//
+//                lastIndex += charNumber;
+//
+//            }
+//
+//        }
 
-        if (cont2 <= finalSize) {
+        if (cont2 <= finalSize+1) {
             for (int i = 0; i < indexArray.length; i++) {
                 finalArray[Integer.parseInt(indexArray[i])] = word;
-                
-                System.out.print(Integer.parseInt(indexArray[i])+" ");
+
+                System.out.print(Integer.parseInt(indexArray[i]) + " ");
             }
-               
-        }else{
+
+        } else {
             finalText = "";
-            
-            for(int j = 0 ;j < finalArray.length ; j++){
+
+            for (int j = 0; j < finalArray.length; j++) {
                 finalText += finalArray[j] + " ";
             }
-            
-            System.out.println("ultima posicion"+ finalArray[finalArray.length-1]);
-            
+
+            System.out.println("ultima posicion" + finalArray[finalArray.length - 1]);
+
             System.out.println("Contenido de finalText:\n" + finalText);
         }
 

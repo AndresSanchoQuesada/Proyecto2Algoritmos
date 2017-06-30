@@ -55,11 +55,15 @@ public class Panel extends JPanel{
         
         if(node != null){
             int middlePoint = (rightBorder+leftBorder)/2;
+            
             g2.setColor(Color.GREEN);
             g2.fillOval(middlePoint, height, tamanioNodo, tamanioNodo);
             
+            
             g2.setColor(Color.BLACK);
             g2.drawString(node.word, middlePoint, height);
+            
+            
 
             int newHeight = height + (2*tamanioNodo);
 
@@ -73,7 +77,5 @@ public class Panel extends JPanel{
                 paintNode(g2, node.right, rightBorder, middlePoint, newHeight);
             }
         }
-        
-    }
-    
+	}
 }

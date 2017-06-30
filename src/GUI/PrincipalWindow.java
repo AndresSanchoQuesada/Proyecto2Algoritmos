@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package GUI;
 
 import Domain.SelfBalancingBinarySerchTree;
@@ -41,7 +42,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     JDesktopPane desktopPane;// cuando no se pone la visibilidad por defecto es privated
     // private InternalRegistrarGenero primerInternalFrame;
     private JMenuBar mn;
-    private JMenu jmOpciones;
+    private JMenu jmOptions;
     private JMenuItem jMenuItemChargeFile;
     private JMenuItem jMenuItem2;
     private JMenuItem jMenuItem3;
@@ -51,7 +52,8 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     
     public JTextArea jta;
     JScrollPane scrollPane;
-    
+
+
     String text;
     String text2;
     SelfBalancingBinarySerchTree balancingBinarySearchTree;
@@ -60,7 +62,7 @@ public class PrincipalWindow extends JFrame implements ActionListener {
     public static int finalSize;
 
     public PrincipalWindow() {
-        super("File compressor");
+        super("Proyect 2");
         this.setSize(800, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -74,37 +76,36 @@ public class PrincipalWindow extends JFrame implements ActionListener {
 
     private void init() {
 
-
         this.mn = new JMenuBar();
         setJMenuBar(this.mn);
-        this.jmOpciones = new JMenu("Options");
-        this.mn.add(jmOpciones);
+        this.jmOptions = new JMenu("Options");
+        this.mn.add(jmOptions);
 
-        this.jMenuItemChargeFile = new JMenuItem("file upload");
+        this.jMenuItemChargeFile = new JMenuItem("File Upload");
         this.jMenuItemChargeFile.addActionListener(this);
-        this.jmOpciones.add(this.jMenuItemChargeFile);
+        this.jmOptions.add(this.jMenuItemChargeFile);
 
         this.jMenuItem2 = new JMenuItem("File Insert");
         this.jMenuItem2.addActionListener(this);
-        this.jmOpciones.add(this.jMenuItem2);
+        this.jmOptions.add(this.jMenuItem2);
 
-        this.jMenuItem3 = new JMenuItem("File Compress");
+        this.jMenuItem3 = new JMenuItem("Compress File");
         this.jMenuItem3.addActionListener(this);
-        this.jmOpciones.add(this.jMenuItem3);
+        this.jmOptions.add(this.jMenuItem3);
 
         this.jMenuItem4 = new JMenuItem("Safe File Compress");
         this.jMenuItem4.addActionListener(this);
         this.jMenuItem4.setEnabled(false);
-        this.jmOpciones.add(this.jMenuItem4);
+        this.jmOptions.add(this.jMenuItem4);
         
         this.jMenuItem5 = new JMenuItem("Descompress file");
         this.jMenuItem5.addActionListener(this);
-        this.jmOpciones.add(this.jMenuItem5);
+        this.jmOptions.add(this.jMenuItem5);
         
         this.jMenuItem6 = new JMenuItem("Show Tree");
         this.jMenuItem6.addActionListener(this);
         this.jMenuItem6.setEnabled(false);
-        this.jmOpciones.add(this.jMenuItem6);
+        this.jmOptions.add(this.jMenuItem6);
 
         this.jta = new JTextArea();
         //this.jta.setBounds(100, 100, 500, 400);
@@ -155,6 +156,9 @@ public class PrincipalWindow extends JFrame implements ActionListener {
                     if (!text.equals("")) {
                         this.jta.setText(text);
                         this.jta.setVisible(true);
+                        this.jta.getCaret();
+                        this.jta.setLineWrap(true);
+                        this.jta.setWrapStyleWord(true);
                         scrollPane.setVisible(true);
                     }//if
 
@@ -210,7 +214,13 @@ public class PrincipalWindow extends JFrame implements ActionListener {
             }
         }else if(e.getSource()==jMenuItem5){     
             balancingBinarySearchTree.descompressFile();
-            jta.setText(finalText);
+
+                        this.jta.setText(finalText);
+                        this.jta.setVisible(true);
+                        this.jta.getCaret();
+                        this.jta.setLineWrap(true);
+                        this.jta.setWrapStyleWord(true);
+                        scrollPane.setVisible(true);
             
         } else if(e.getSource()==jMenuItem6){
             Panel displayTree = new Panel(balancingBinarySearchTree);
@@ -227,5 +237,5 @@ public class PrincipalWindow extends JFrame implements ActionListener {
         }
 
     }// metodo actionPerformed
-
+    
 }
